@@ -12,11 +12,18 @@ import {
   setDoc,
 } from "firebase/firestore";
 import { storage } from "./firebase";
-import { ref, uploadBytes, deleteObject } from "firebase/storage";
+import {
+  ref,
+  uploadBytes,
+  deleteObject,
+  listAll,
+  getDownloadURL,
+} from "firebase/storage";
 import { db } from "./firebase";
 import { useEffect, useState } from "react";
 import { customAlphabet } from "nanoid";
 const nanoid = customAlphabet("1234567890", 5);
+const listRef = ref(storage, "files/");
 
 function App() {
   const [checked, setChecked] = useState(true);
@@ -52,6 +59,7 @@ function App() {
 
   const handleDelete = async (id) => {
     await deleteDoc(doc(db, "todos", id));
+
     const desertRef = ref(storage, `files/${id}`);
     deleteObject(desertRef);
   };
@@ -78,6 +86,21 @@ function App() {
     setDate("");
   };
 
+  const openFile = (e, id) => {
+    e.preventDefault();
+    listAll(listRef).then((res) => {
+      res.items.forEach((item) => {
+        if (item.name === id) {
+          getDownloadURL(item).then((url) => {
+            window.open(url, "_blank");
+          });
+        } else {
+          alert("Вы не добавили файл");
+        }
+      });
+    });
+  };
+
   return (
     <div className="App">
       <Header checked={checked} setCheked={setChecked} />
@@ -96,6 +119,7 @@ function App() {
         {todos.map((todo) => {
           return (
             <Todo
+              openFile={openFile}
               file={file}
               setFile={setFile}
               key={todo.id}

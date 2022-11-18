@@ -5,6 +5,7 @@ export default function Todo({
   toggleComplete,
   handleDelete,
   handleEdit,
+  openFile,
 }) {
   const [newTitle, setNewTitle] = useState(todo.title);
   const [newText, setNewText] = useState(todo.text);
@@ -27,7 +28,7 @@ export default function Todo({
       setNewText(e.target.value);
     }
   };
-
+  let url;
   return (
     <div className={`todo ${todo.completed ? "todoComplete" : null}`}>
       <input
@@ -57,6 +58,11 @@ export default function Todo({
       </button>
       <div className="closeTodo" onClick={() => handleDelete(todo.id)}>
         &#10008;
+      </div>
+      <div className="fileWrapper">
+        <a className="file" href={url} onClick={(e) => openFile(e, todo.id)}>
+          open File
+        </a>
       </div>
     </div>
   );
