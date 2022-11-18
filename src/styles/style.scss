@@ -1,0 +1,249 @@
+@import 'variables';
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body{
+    background-color: #D3D3D3;
+    font-family: Arial, Helvetica, sans-serif;
+	padding: 20px;
+}
+
+.header{
+	padding:  50px 0 50px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	.Title{
+		font-size: 64px;
+		font-weight: 700;
+		padding: 20px;
+		box-shadow: $box-shadow;
+		border-radius: $border-radius;
+	}
+}
+
+.switchWrapper{
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: center;    
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+.addTodo{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-shadow: $box-shadow;
+	padding: 20px;
+	border-radius: $border-radius;
+	margin-bottom: 50px;
+	gap: 10px;
+	input{
+		background: none;
+		width: 80%;
+		border-radius: 5px;
+		border: solid black 1px;
+	}
+	textarea{
+		margin: 10px 0 10px 0;
+		background: none;
+		width: 80%;
+		border-radius: 5px;
+		border: solid black 1px;
+	}
+	button{
+		margin-top: 10px;
+	}
+}
+.todosWrapperGrid{
+	display: flex;
+	flex-direction: grid;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+}
+.todosWrapperCol{
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+.todo{
+	display: flex;
+	flex-direction: column;
+	box-shadow: $box-shadow;
+	padding: 20px;
+	border-radius: $border-radius;
+	position: relative;
+	
+	input{
+		background: none;
+		border: none;
+		font-size: 32px;
+		cursor: pointer;
+		&:focus{
+			outline: none;
+		}
+	}
+	textarea{
+		
+			background: none;
+			border: none;
+			
+			&:focus{
+				outline: none;
+			}
+		
+	}
+}
+.todoComplete{
+	box-shadow: 0px 0px 10px 1px green;
+}
+.closeTodo{
+	position: absolute;
+	cursor: pointer;
+	right: 10px;
+	top: 10px;
+}
+.togglecComplete{
+	max-width: 60px;
+	background-color: rgba(0, 0, 0, 0.2);
+	border: none;
+	padding: 5px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.completedTodo{
+	color: green;
+	position: absolute;
+	font-size: 64px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
+	margin: 0 10px 0 10px;
+  }
+  
+ .inpFile{
+	display: none;
+ }
+.fileLabel{
+	background-color: rgba(0, 0, 0, 0.2);
+	padding: 10px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+  .switch input {display:none;}
+  
+  /* The slider */
+  .slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: .4s;
+	transition: .4s;
+  }
+  
+  .slider:before {
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	-webkit-transition: .4s;
+	transition: .4s;
+  }
+  
+  input:checked + .slider {
+	background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  input:focus + .slider {
+	box-shadow: 0 0 1px black;
+  }
+  
+  input:checked + .slider:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
+  }
+  
+ 
+  .slider.round {
+	border-radius: 34px;
+  }
+  
+  .slider.round:before {
+	border-radius: 50%;
+  }
+  .fileWrapper{
+	margin-top: 20px;
+  }
+  .file{
+	text-decoration: none;
+	color: black;
+	font-weight: 700;
+	padding: 5px;
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	
+  }
